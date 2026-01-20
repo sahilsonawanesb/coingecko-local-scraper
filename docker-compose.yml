@@ -1,0 +1,73 @@
+# services:
+#   postgres:
+#     image: postgres:16
+#     container_name: coingecko-postgres
+#     restart: unless-stopped
+#     environment:
+#       POSTGRES_DB: coingecko_db
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: Sahil@6222
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+
+#   scraper:
+#     build: .
+#     container_name: coingecko-scraper
+#     depends_on:
+#       - postgres
+#     env_file:
+#       - .env
+#     ports:
+#       - "3000:3000"
+#     restart: unless-stopped
+
+# volumes:
+#   postgres_data:
+
+
+
+
+# New Code:-
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: coingecko-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: coingecko_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Sahil@6222
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  scraper:
+    build: .
+    container_name: coingecko-scraper
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: scraper_user
+      DATABASE_PASSWORD: Sahil@6222
+      DATABASE_NAME: coingecko_db
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
