@@ -99,7 +99,7 @@ import express from "express";
 import cron from "node-cron";
 import { appConfig } from "./config/environment.js";
 import { logger } from "./services/loggerService.js";
-import { initializeDatabase, closeDatabase } from "./services/databaseService.js";
+// import { initializeDatabase, closeDatabase } from "./services/databaseService.js";
 import { run1HourJob } from "./jobs/workflow-1h.js";
 import { run24HourJob } from "./jobs/workflow-24.js";
 import healthRoutes from "./routes/health.routes.js";
@@ -141,7 +141,7 @@ function scheduleCronJobs(): void {
 // Graceful shutdown
 async function shutdown(): Promise<void> {
   logger.info("App", "Shutting down gracefully");
-  await closeDatabase();
+  // await closeDatabase();
   process.exit(0);
 }
 
@@ -159,7 +159,7 @@ async function startApp(): Promise<void> {
     logger.info("App", `Port: ${appConfig.port}`);
 
     // Initialize database (also creates tables if they don't exist)
-    await initializeDatabase();
+    // await initializeDatabase();
     logger.info("App", "Database initialized and tables ensured");
 
     // Setup cron jobs
