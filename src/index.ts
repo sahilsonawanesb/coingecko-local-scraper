@@ -22,33 +22,33 @@ function scheduleCronJobs(): void {
 
   // Run 1H job every hour at minute 0
   // Pattern: 0 * * * * (minute 0, every hour)
-  // cron.schedule("0 * * * *", () => {
-  //   logger.info("Scheduler", "Triggering 1H job");
-  //   run1HourJob().catch((error) => {
-  //     logger.error("Scheduler", "1H job error", error);
-  //   });
-  // });
+  cron.schedule("0 * * * *", () => {
+    logger.info("Scheduler", "Triggering 1H job");
+    run1HourJob().catch((error) => {
+      logger.error("Scheduler", "1H job error", error);
+    });
+  });
 
   logger.info("Scheduler", "1H cron job scheduled (every hour)");
 
 
-  // Testing 1H job every 1 minute just for testing purpose.
-  cron.schedule("* * * * *", () => {
-    logger.info("Scheduler", "Triggering 1H job");
-    run1HourJob().catch((error) => {
-      logger.error("Scheduler", "1h job error", error);
-    });
-  });
+  // // Testing 1H job every 1 minute just for testing purpose.
+  // cron.schedule("* * * * *", () => {
+  //   logger.info("Scheduler", "Triggering 1H job");
+  //   run1HourJob().catch((error) => {
+  //     logger.error("Scheduler", "1h job error", error);
+  //   });
+  // });
 
 
   // Run 24H job every day at midnight
   // Pattern: 0 0 * * * (minute 0, hour 0, every day)
-  // cron.schedule("0 0 * * *", () => {
-  //   logger.info("Scheduler", "Triggering 24H job");
-  //   run24HourJob().catch((error) => {
-  //     logger.error("Scheduler", "24H job error", error);
-  //   });
-  // });
+  cron.schedule("0 0 * * *", () => {
+    logger.info("Scheduler", "Triggering 24H job");
+    run24HourJob().catch((error) => {
+      logger.error("Scheduler", "24H job error", error);
+    });
+  });
 
   logger.info("Scheduler", "24H cron job scheduled (every day at midnight)");
 }
