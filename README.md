@@ -23,16 +23,16 @@ Type this:
 ```
 ## Features
 
-✅ **Cloudflare Bypass** - Uses Playwright with anti-detection measures
-✅ **Scheduled Execution** - Cron-based job scheduling (configurable intervals)
-✅ **Duplicate Prevention** - UPSERT queries to handle duplicate data
-✅ **Error Handling** - Comprehensive error classification and logging
-✅ **Auto Table Creation** - SQL scripts create tables if they don't exist
-✅ **Docker Ready** - Complete Docker and Docker Compose setup
-✅ **Production Grade** - Environment separation, logging, monitoring
-✅ **Health Checks** - API endpoints for health and status monitoring
-✅ **Modular Architecture** - Separated concerns (services, jobs, routes, config)
-✅ **TypeScript** - Full type safety throughout codebase
+**Cloudflare Bypass** - Uses Playwright with anti-detection measures
+**Scheduled Execution** - Cron-based job scheduling (configurable intervals)
+**Duplicate Prevention** - UPSERT queries to handle duplicate data
+**Error Handling** - Comprehensive error classification and logging
+**Auto Table Creation** - SQL scripts create tables if they don't exist
+**Docker Ready** - Complete Docker and Docker Compose setup
+**Production Grade** - Environment separation, logging, monitoring
+**Health Checks** - API endpoints for health and status monitoring
+**Modular Architecture** - Separated concerns (services, jobs, routes, config)
+**TypeScript** - Full type safety throughout codebase
 ```
 
 ---
